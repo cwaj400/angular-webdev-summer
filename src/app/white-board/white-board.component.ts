@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CourseServiceClient} from '../services/course.service.client';
 
 @Component({
@@ -8,34 +8,15 @@ import {CourseServiceClient} from '../services/course.service.client';
 })
 export class WhiteBoardComponent implements OnInit {
 
-  courses = [];
-  selectedCourse = {};
-  selectedModule = {};
-
-  constructor(private courseService: CourseServiceClient) {}
-  selectCourse(course) {
-    this.selectedCourse = course;
-    this.selectedModule = {};
-  }
-  selectModule(module) {
-    this.selectedModule = module;
-  }
-  deleteCourse(courseId) {
-    this.courses = this.courses.filter(course =>
-          course.id !== courseId);
-  }
-  addCourse(courseTitle) {
-    const largestId = Math.max.apply(
-      Math, this.courses.map(
-        function(course){
-          return course.id; }));
-    this.courses.push(
-      {title: courseTitle, id: largestId + 1}
-    );
+  constructor() {
   }
 
   ngOnInit() {
-    this.courseService.findAllCourses().then(courses => this.courses = courses);
   }
 
 }
+
+// TODO:different areas of main page.
+// TODO: grid area?
+// TODO: node js, can it be in same folder?
+// TODO: selection fix.
