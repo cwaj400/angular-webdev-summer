@@ -12,9 +12,8 @@ export class UserServiceClient {
       },
       body: JSON.stringify(user)
     })
-
   currentUser = () =>
     fetch('http://localhost:3000/currentUser', {
       credentials: 'include'
     }).then(response => response.json())
-};
+}

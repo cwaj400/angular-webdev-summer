@@ -7,7 +7,7 @@ export class SectionServiceClient {
     fetch('http://localhost:3000/api/section/' + sectionId + '/enroll', {
       method: 'put',
       credentials: 'include'
-    });
+    })
 
   findAllSections = () =>
     fetch('http://localhost:3000/api/section')

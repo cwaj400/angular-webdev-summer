@@ -1,10 +1,16 @@
-
-<h2>Login</h2>
-<input [(ngModel)]="username"
-       class="form-control"/>
-<input [(ngModel)]="password"
-       class="form-control"/>
-<button (click)="login(username, password)"
-        class="btn btn-primary btn-block">
-  Login
-</button>
+<div>
+  <h2>Login</h2>
+  <input [(ngModel)]="username"
+         class="form-control" placeholder="Username"/>
+  <input [(ngModel)]="password"
+         class="form-control" placeholder="Password"/>
+  <button (click)="login(username, password)"
+          class="btn btn-primary btn-block">
+    Login
+  </button>
+  <div>
+    <h6>Is an account something you would like?</h6>
+  </div>
+  <a class="btn btn-success" href="../register/register.component.html" role="button">
+    Register here</a>
+</div>
