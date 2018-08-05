@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {pureArrayDef} from '@angular/core/src/view';
 
 @Component({
   selector: 'app-register',

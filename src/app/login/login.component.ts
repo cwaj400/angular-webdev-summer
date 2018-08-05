@@ -26,4 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToRegister() {
+    this.router.navigate(['register']);
+  }
 }
