@@ -15,8 +15,11 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.userService.currentUser().then(user => this.user = user);
-
+    this.userService.currentUser()
+      .then(response => response.json())
+      .then(user => {this.user = user;
+      alert(user.username);
+      });
   }
 
 }

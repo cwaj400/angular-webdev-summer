@@ -15,6 +15,7 @@ import {UserServiceClient} from './services/user.service.client';
 import {SectionServiceClient} from './services/section.service.client';
 import {RouterModule} from '@angular/router';
 import {routing} from './app.routing';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {routing} from './app.routing';
     ProfileComponent,
     CourseNavigatorComponent,
     EnrollmentComponent,
-    SectionsComponent
+    SectionsComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

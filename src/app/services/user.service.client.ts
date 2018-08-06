@@ -13,10 +13,9 @@ export class UserServiceClient {
     }).then(response => response.status);
 
   currentUser = () =>
-    fetch('http://localhost:3000/api/profile', {
-      method: 'get',
+    fetch('http://localhost:3000/api/profiles', {
       credentials: 'include'
-    }).then(response => response.json())
+    });
 
   register = (user) =>
     fetch('http://localhost:3000/api/register', {

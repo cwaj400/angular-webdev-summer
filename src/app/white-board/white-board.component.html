@@ -1,13 +1,49 @@
 <div class="container-fluid">
-  <h1>Welcome to WhiteBoard</h1>
+  <h2>Welcome to WhiteBoard {{user.username}}</h2>
+    <h2>Here is your password: {{user.password}}</h2>
+    <nav class="navbar navbar-default">
 
-    <a routerLink="enrollments">Enrollments</a> |
-    <a routerLink="sections">Sections</a> |
-    <a routerLink="courses">Courses</a> |
-    <a routerLink="login">Login</a> |
-    <a routerLink="register">Register</a> |
-    <a routerLink="profile">Profile</a>
-  <router-outlet></router-outlet>
+      <div id="navbar" class="navbar navbar-collapse">
+
+        <ul class="nav navbar-nav">
+          <li>
+            <a routerLink="enrollments">Enrollments</a>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav">
+          <li>
+            <a routerLink="sections">Sections</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav">
+          <li>
+            <a routerLink="courses">Courses</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav">
+          <li><a routerLink="login">Login</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+          <li><a routerLink="logout">Logout</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+          <li>
+            <a routerLink="register">Register</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav">
+          <li>
+            <a routerLink="profile">Profile</a>
+          </li>
+        </ul>
+      </div>
+
+
+    </nav>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
 
 </div>
 

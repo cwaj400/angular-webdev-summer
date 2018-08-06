@@ -20,10 +20,16 @@ export class LoginComponent implements OnInit {
     if (username && password !== undefined) {
       const user = {
         username: username,
-        password: password
+        password: password,
       };
       this.userService.login(user)
-        .then(u => this.router.navigate(['profile']));
+        .then(status => {
+          if (status === 200) {
+            this.router.navigate(['profile']);
+          } else {
+            alert('That person doesn\'t exist - consider registering instead');
+          }
+        });
     } else {
       alert('Looks like you forgot to fill in some fields');
     }

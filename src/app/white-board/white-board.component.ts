@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CourseServiceClient} from '../services/course.service.client';
+import {UserServiceClient} from '../services/user.service.client';
+import {User} from '../models/user.model.client';
 
 @Component({
   selector: 'app-white-board',
@@ -7,16 +9,17 @@ import {CourseServiceClient} from '../services/course.service.client';
   styleUrls: ['./white-board.component.css']
 })
 export class WhiteBoardComponent implements OnInit {
+  user: User;
 
-  constructor() {
+  constructor(private userService: UserServiceClient) {
   }
 
   ngOnInit() {
+    this.userService.currentUser()
+      .then(response => response.json()).then(user => {
+      if (user !== undefined) {
+        this.user = user;
+      }
+    });
   }
-
 }
-
-// TODO:different areas of main page.
-// TODO: grid area?
-// TODO: node js, can it be in same folder?
-// TODO: selection fix.

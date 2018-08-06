@@ -5,6 +5,8 @@ import {RegisterComponent} from './register/register.component';
 import {ProfileComponent} from './profile/profile.component';
 import {SectionsComponent} from './sections/sections.component';
 import {EnrollmentComponent} from './enrollment/enrollment.component';
+import {AuthGuard} from './guards/AuthGuard';
+import {LogoutComponent} from './logout/logout.component';
 
 const appRoutes: Routes = [
   { path: 'enrollments', component: EnrollmentComponent },
@@ -12,7 +14,9 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'courses', component: CourseNavigatorComponent },
-  { path: 'sections', component: SectionsComponent }
+  { path: 'sections', component: SectionsComponent },
+  { path: 'logout', component: LogoutComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
