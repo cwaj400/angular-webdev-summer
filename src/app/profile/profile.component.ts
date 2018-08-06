@@ -10,6 +10,9 @@ import {User} from '../models/user.model.client';
 export class ProfileComponent implements OnInit {
 
   user: User;
+  username: String;
+  password: String;
+  email: String;
 
   constructor(private userService: UserServiceClient) {
   }
@@ -17,9 +20,34 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.userService.currentUser()
       .then(response => response.json())
-      .then(user => {this.user = user;
-      alert(user.username);
+      .then(user => {
+        this.user = user;
       });
   }
 
+  update(username, password, email) {
+    if (username !== undefined) {
+      this.username = username;
+    }
+    if (password !== undefined) {
+      this.password = password;
+    }
+    if (email !== undefined) {
+      this.email = email;
+    }
+    const newUser = {
+      username: username,
+      password: password,
+      email: email
+    };
+    // this.userService.updateUser(this.user._id, newUser);
+  }
+
+  // logout() {
+  //   this.c
+  //     .logout()
+  //     .then(() =>
+  //       this.router.navigate(['login']));
+  //
+  // }
 }

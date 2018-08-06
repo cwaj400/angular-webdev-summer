@@ -3,5 +3,15 @@
 
   <p>Here Are Your Details</p>
 
-    <h5>{{user.username}}</h5>
+  <div class="col-6">
+    <p>Username</p>
+    <input [(ngModel)]="username" class="form-control" placeholder="{{user.username}}" type="text"/>
+    <p>Password</p>
+    <input [(ngModel)]="password" class="form-control" placeholder="{{user.password}}" type="text"/>
+    <p>Email</p>
+    <input [(ngModel)]="email" class="form-control" placeholder="{{user.email}}" type="email"/>
+    <button (click)="update(username, password, email)">Submit Changes</button>
+  </div>
+
+
 </div>

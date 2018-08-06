@@ -1,49 +1,48 @@
 <div class="container-fluid">
-  <h2>Welcome to WhiteBoard {{user.username}}</h2>
-    <h2>Here is your password: {{user.password}}</h2>
-    <nav class="navbar navbar-default">
+  <h2 *ngIf="user">Welcome to WhiteBoard {{user.username}}!</h2>
+  <nav class="navbar navbar-default">
 
-      <div id="navbar" class="navbar navbar-collapse">
+    <div id="navbar" class="navbar navbar-collapse navbar-dark">
 
-        <ul class="nav navbar-nav">
-          <li>
-            <a routerLink="enrollments">Enrollments</a>
-          </li>
-        </ul>
+      <ul class="nav navbar-nav">
+        <li>
+          <a routerLink="enrollments">Enrollments</a>
+        </li>
+      </ul>
 
-        <ul class="nav navbar-nav">
-          <li>
-            <a routerLink="sections">Sections</a>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li>
-            <a routerLink="courses">Courses</a>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li><a routerLink="login">Login</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li><a routerLink="logout">Logout</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li>
-            <a routerLink="register">Register</a>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav">
-          <li>
-            <a routerLink="profile">Profile</a>
-          </li>
-        </ul>
-      </div>
-
-
-    </nav>
-    <div class="container">
-      <router-outlet></router-outlet>
+      <ul class="nav navbar-nav">
+        <li>
+          <a routerLink="sections">Sections</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li>
+          <a routerLink="courses">Courses</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li><a routerLink="login">Login</a></li>
+      </ul>
+      <ul class="nav navbar-nav" *ngIf="user.username">
+        <li><button (click)="logout()" class="btn btn-outline-primary">Logout</button></li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li>
+          <a routerLink="register">Register</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav" *ngIf="user.username">
+        <li>
+          <a routerLink="profile">Profile</a>
+        </li>
+      </ul>
     </div>
+
+
+  </nav>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 
 </div>
 

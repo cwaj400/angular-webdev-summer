@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
-import {Router} from '@angular/router';
+import {NavigationStart, Router} from '@angular/router';
+import {User} from '../models/user.model.client';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +12,19 @@ export class LoginComponent implements OnInit {
 
   username: String;
   password: String;
+  user: User = new User();
 
-  constructor(private router: Router,
-              private userService: UserServiceClient) {
+  constructor(private userService: UserServiceClient, private router: Router) {
+    router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.userService.currentUser()
+          .then(response => response.json()).then(user => {
+          if (user !== undefined) {
+            this.user = user;
+          }
+        });
+      }
+    });
   }
 
   login = (username, password) => {
