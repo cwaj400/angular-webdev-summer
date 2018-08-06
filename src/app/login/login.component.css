@@ -1,0 +1,21 @@
+input[type=text] {
+  width: 40%;
+  padding: 30px 20px;
+  margin: 8px 0;
+}
+
+input[type=password] {
+  width: 40%;
+  padding: 30px 20px;
+  margin: 8px 0;
+}
+
+.btn {
+  width: 20%;
+  padding: 5px 3px;
+  margin: 8px 0;
+}
+
+#details {
+  margin: 50px auto;
+}

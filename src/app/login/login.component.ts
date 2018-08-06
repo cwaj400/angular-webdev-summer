@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
 import {Router} from '@angular/router';
 
@@ -13,16 +13,23 @@ export class LoginComponent implements OnInit {
   password: String;
 
   constructor(private router: Router,
-              private userService: UserServiceClient) { }
+              private userService: UserServiceClient) {
+  }
 
   login = (username, password) => {
-    const user = {
-      username: username,
-      password: password
-    };
-    this.userService.login(user)
-      .then(u => this.router.navigate(['profile']));
-  }
+    if (username && password !== undefined) {
+      const user = {
+        username: username,
+        password: password
+      };
+      this.userService.login(user)
+        .then(u => this.router.navigate(['profile']));
+    } else {
+      alert('Looks like you forgot to fill in some fields');
+    }
+  };
+
+
   ngOnInit() {
   }
 

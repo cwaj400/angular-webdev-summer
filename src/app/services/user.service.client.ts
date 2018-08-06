@@ -10,13 +10,13 @@ export class UserServiceClient {
         'content-type': 'application/json'
       },
       body: JSON.stringify(user)
-    });
+    }).then(response => response.status);
 
   currentUser = () =>
     fetch('http://localhost:3000/api/profile', {
       method: 'get',
       credentials: 'include'
-    }).then(response => response.json());
+    }).then(response => response.json())
 
   register = (user) =>
     fetch('http://localhost:3000/api/register', {
@@ -25,7 +25,8 @@ export class UserServiceClient {
       headers: {
         'content-type': 'application/json'
       }, body: JSON.stringify(user)
-    });
+    }).then(response => response.status);
+
   logout = () =>
     fetch('http://localhost:3000/api/logout', {
       method: 'post',

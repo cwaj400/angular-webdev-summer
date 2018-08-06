@@ -1,10 +1,21 @@
 #details {
-  margin-top: 50px;
+  margin: 50px auto;
 }
 
 input[type=text] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
+  width: 40%;
+  padding: 30px 20px;
+  margin: 8px 0px;
+}
+
+input[type=password] {
+  width: 40%;
+  padding: 30px 20px;
+  margin: 8px 0px;
+}
+
+input[type=email] {
+  width: 40%;
+  padding: 30px 20px;
+  margin: 8px 0px;
 }

@@ -1,14 +1,14 @@
-<div>
-  <h2>Login</h2>
-  <input [(ngModel)]="username" class="form-control" placeholder="Username"/>
-  <input [(ngModel)]="password" class="form-control" placeholder="Password"/>
+<div id="details">
+  <h1>Login</h1>
+  <input [(ngModel)]="username" class="form-control" placeholder="Username" type="text"/>
+  <input [(ngModel)]="password" class="form-control" placeholder="Password" type="password"/>
   <button (click)="login(username, password)" class="btn btn-primary btn-block">
     Login
   </button>
   <div>
     <h6>Is an account something you would like?</h6>
   </div>
-  <button (click)="goToRegister()" class="btn btn-success" href="../register/register.component.html" role="button">
+  <button (click)="goToRegister(username, password)" class="btn btn-success" href="../register/register.component.html" role="button" type="button">
     Register
   </button>
 </div>
