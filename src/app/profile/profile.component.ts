@@ -26,6 +26,7 @@ export class ProfileComponent implements OnInit {
   }
 
   update(username, password, email) {
+    alert('user updated!');
     if (username !== undefined) {
       this.username = username;
     }
@@ -40,7 +41,7 @@ export class ProfileComponent implements OnInit {
       password: password,
       email: email
     };
-    // this.userService.updateUser(this.user._id, newUser);
+    // this.userService.updateUser(newUser);
   }
 
   // logout() {

@@ -3,19 +3,26 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class SectionServiceClient {
 
-  enroll = sectionId =>
+  enroll = (sectionId) =>
     fetch('http://localhost:3000/api/section/' + sectionId + '/enroll', {
       method: 'put',
       credentials: 'include'
-    });
+    }).then(response => response.json());
+
 
   findAllSections = () =>
     fetch('http://localhost:3000/api/section')
       .then(response => response.json());
 
-  findSectionsForCourse = courseId =>
-    fetch('http://localhost:3000/api/course/:courseId/' + courseId + '/section')
-      .then(response => response.json());
+  updateSection = sectionId =>
+    fetch('http://localhost:3000/api/section/:sectionId' + sectionId, {
+      method: 'put',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(response => response.status);
+
 
   findSectionByItsItd = sectionId =>
     fetch('http://localhost:3000/api/section/:sectionId' + sectionId, {
@@ -23,11 +30,6 @@ export class SectionServiceClient {
       credentials: 'include',
     }).then(response => response.json());
 
-  updateSection = sectionId =>
-    fetch('http://localhost:3000/api/section/:sectionId' + sectionId, {
-      method: 'put',
-      credentials: 'include',
-    });
 
   deleteSection = sectionId =>
     fetch('http://localhost:3000/api/section/:sectionId' + sectionId, {
@@ -38,6 +40,11 @@ export class SectionServiceClient {
       }, body: JSON.stringify(sectionId)
     }).then(response => response.json());
 
+
+  findSectionsForCourse = courseId =>
+    fetch('http://localhost:3000/api/course/:courseId/' + courseId + '/section')
+      .then(response => response.json());
+
   createSection = section =>
     fetch('http://localhost:3000/api/course/:courseId/section', {
       method: 'post',
@@ -46,6 +53,5 @@ export class SectionServiceClient {
       },
       credentials: 'include',
       body: JSON.stringify(section)
-    })
-      .then(response => response.json());
+    }).then(response => response.json());
 }

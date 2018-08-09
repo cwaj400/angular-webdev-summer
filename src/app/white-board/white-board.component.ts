@@ -12,6 +12,7 @@ import {Navigation} from 'selenium-webdriver';
 })
 export class WhiteBoardComponent implements OnInit {
   user: User = new User();
+  flag: boolean;
 
   constructor(private userService: UserServiceClient, private router: Router) {
     router.events.subscribe(event => {
@@ -20,6 +21,7 @@ export class WhiteBoardComponent implements OnInit {
           .then(response => response.json()).then(user => {
           if (user !== undefined) {
             this.user = user;
+            this.flag = false;
           }
         });
       }
@@ -27,12 +29,14 @@ export class WhiteBoardComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.flag = true;
   }
 
   logout() {
     this.userService.logout();
     alert('Logging you out ' + this.user.username);
     this.router.navigate(['login']);
+    this.flag = true;
+    window.location.reload(true);
   }
 }
