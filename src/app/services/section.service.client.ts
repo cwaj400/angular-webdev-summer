@@ -1,21 +1,23 @@
 import {Injectable} from '@angular/core';
 
+const URL = 'http://localhost:3000';
+
 @Injectable()
 export class SectionServiceClient {
 
   enroll = (sectionId) =>
-    fetch('http://localhost:3000/api/section/' + sectionId + '/enroll', {
+    fetch(URL + '/api/section/' + sectionId + '/enroll', {
       method: 'put',
       credentials: 'include'
     }).then(response => response.json());
 
 
   findAllSections = () =>
-    fetch('http://localhost:3000/api/section')
+    fetch(URL + '/api/section')
       .then(response => response.json());
 
   updateSection = sectionId =>
-    fetch('http://localhost:3000/api/section/:sectionId' + sectionId, {
+    fetch(URL + '/api/section/:sectionId' + sectionId, {
       method: 'put',
       credentials: 'include',
       headers: {
@@ -25,14 +27,14 @@ export class SectionServiceClient {
 
 
   findSectionByItsItd = sectionId =>
-    fetch('http://localhost:3000/api/section/:sectionId' + sectionId, {
+    fetch(URL + '/api/section/:sectionId' + sectionId, {
       method: 'get',
       credentials: 'include',
     }).then(response => response.json());
 
 
   deleteSection = sectionId =>
-    fetch('http://localhost:3000/api/section/:sectionId' + sectionId, {
+    fetch(URL + '/api/section/:sectionId' + sectionId, {
       method: 'delete',
       credentials: 'include',
       headers: {
@@ -42,11 +44,11 @@ export class SectionServiceClient {
 
 
   findSectionsForCourse = courseId =>
-    fetch('http://localhost:3000/api/course/:courseId/' + courseId + '/section')
+    fetch(URL + '/api/course/:courseId/' + courseId + '/section')
       .then(response => response.json());
 
   createSection = section =>
-    fetch('http://localhost:3000/api/course/:courseId/section', {
+    fetch(URL + '/api/course/:courseId/section', {
       method: 'post',
       headers: {
         'content-type': 'application/json'
