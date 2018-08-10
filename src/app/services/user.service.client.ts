@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-const URL = 'http://localhost:3000';
+const URL = 'https://node-app-angelljames.herokuapp.com';
 
 @Injectable()
 export class UserServiceClient {
