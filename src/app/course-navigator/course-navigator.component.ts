@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {CourseServiceClient} from '../services/course.service.client';
+import { ModuleServiceClient } from '../services/module.service.client';
 import {Course} from '../models/course.model.client';
 import {SectionServiceClient} from '../services/section.service.client';
-import { Router } from '@angular/router';
+import {NavigationStart, Router} from '@angular/router';
+import {UserServiceClient} from '../services/user.service.client';
+import {User} from '../models/user.model.client';
+import {LessonServiceClient} from '../services/lesson.service.client';
 
 
 @Component({
@@ -12,11 +16,24 @@ import { Router } from '@angular/router';
 })
 export class CourseNavigatorComponent implements OnInit {
 
+  user = new User();
+
   courses: Course[] = [];
   selectedCourse = {};
   selectedModule = {};
 
-  constructor(private route: Router, private courseService: CourseServiceClient, private sectionService: SectionServiceClient) {
+  constructor(private userService: UserServiceClient, private router: Router,
+              private courseService: CourseServiceClient, private sectionService: SectionServiceClient) {
+    router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.userService.currentUser()
+          .then(response => response.json()).then(user => {
+          if (user !== undefined) {
+            this.user = user;
+          }
+        });
+      }
+    });
   }
 
   selectCourse(course) {
@@ -28,7 +45,7 @@ export class CourseNavigatorComponent implements OnInit {
   }
 
   enroll(course) {
-    this.route.navigate(['sections']);
+    this.router.navigate(['sections']);
   }
   ngOnInit() {
     this.courseService
@@ -36,4 +53,8 @@ export class CourseNavigatorComponent implements OnInit {
       .then(courses => this.courses = courses);
   }
 
+  seeContents(course) {
+    this.selectedCourse = this.courseService.findCourseById(course.id);
+    // this.route.navigate(['modules']);
+  }
 }

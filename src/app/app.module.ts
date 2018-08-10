@@ -16,6 +16,17 @@ import {SectionServiceClient} from './services/section.service.client';
 import {RouterModule} from '@angular/router';
 import {routing} from './app.routing';
 import { LogoutComponent } from './logout/logout.component';
+import { TrueFalseQuestionComponent } from './true-false-question/true-false-question.component';
+import { MultipleChoiceQuestionComponent } from './multiple-choice-question/multiple-choice-question.component';
+import { FillBlanksQuestionComponent } from './fill-blanks-question/fill-blanks-question.component';
+import { EssayQuestionComponent } from './essay-question/essay-question.component';
+import { QuizListComponent } from './quiz-list/quiz-list.component';
+import { QuizTakerComponent } from './quiz-taker/quiz-taker.component';
+import { ModuleListComponent } from './module-list/module-list.component';
+import { LessonTabsComponent } from './lesson-tabs/lesson-tabs.component';
+import {LessonServiceClient} from './services/lesson.service.client';
+import {ModuleServiceClient} from './services/module.service.client';
+import { WidgetListComponent } from './widget-list/widget-list.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +38,23 @@ import { LogoutComponent } from './logout/logout.component';
     CourseNavigatorComponent,
     EnrollmentComponent,
     SectionsComponent,
-    LogoutComponent
+    LogoutComponent,
+    TrueFalseQuestionComponent,
+    MultipleChoiceQuestionComponent,
+    FillBlanksQuestionComponent,
+    EssayQuestionComponent,
+    QuizListComponent,
+    QuizTakerComponent,
+    ModuleListComponent,
+    LessonTabsComponent,
+    WidgetListComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    routing
+    routing,
   ],
-  providers: [CourseServiceClient, UserServiceClient, SectionServiceClient],
+  providers: [CourseServiceClient, UserServiceClient, ModuleServiceClient, SectionServiceClient, LessonServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
