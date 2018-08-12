@@ -3,40 +3,17 @@
 
 
   <div class="row">
-      <div *ngFor="let course of courses" class="col-lg-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{course.title}}</h5>
-            <button href="" class="btn btn-success" (click)='enroll(course)'> Enroll</button>
-            <button href="" class="btn btn-dark" (click)="seeContents(course)"> See Contents</button>
-          </div>
+    <div *ngFor="let course of courses" class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{course.title}}</h5>
+          <a class="float-right btn btn-primary"
+             href="/course/{{course.id}}">
+            Enroll
+          </a>
+          <button href="" class="btn btn-dark" (click)="seeContents(course)"> See Contents</button>
         </div>
+      </div>
     </div>
   </div>
-
-  <!--<div class="row">-->
-  <!--<div class="col-3">-->
-  <!--<ul class="list-group">-->
-  <!--<li class="list-group-item active">Courses</li>-->
-  <!--<li *ngFor="let course of courses"-->
-  <!--(click)="selectCourse(course.id)"-->
-  <!--class="list-group-item">-->
-  <!--{{course.title}}-->
-  <!--</li>-->
-  <!--</ul>-->
-  <!--</div>-->
-  <!--<div class="col-3">-->
-  <!--<ul class="list-group">-->
-  <!--<li class="list-group-item active">Modules</li>-->
-  <!--<li *ngFor="let module of modules" class="list-group-item">-->
-  <!--{{module.title}}-->
-  <!--</li>-->
-  <!--</ul>-->
-  <!--</div>-->
-  <!--<div class="col-3"><app-lesson-tabs></app-lesson-tabs></div>-->
-
-  <!--<div class="col-3">-->
-  <!--<app-widget-list></app-widget-list>-->
-  <!--</div>-->
-  <!--</div>-->
 </div>
