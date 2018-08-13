@@ -55,12 +55,13 @@ export class SectionsComponent implements OnInit {
   createSection(sectionName, seats) {
     const section = {
       title: sectionName,
-      course: this.courseId,
-      seats: seats,
+      courseId: 11,
+      seats: 5,
     };
 
     this.service.createSection(section).then(() => {
-      this.loadSections(this.courseId);
+      // this.loadSections(this.courseId);
+      alert('course id is: ' + this.courseId);
       alert('Section ' + sectionName + ' created!');
     });
     window.location.reload();

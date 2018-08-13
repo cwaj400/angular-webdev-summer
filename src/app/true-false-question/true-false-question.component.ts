@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-true-false-question',
@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrueFalseQuestionComponent implements OnInit {
 
+  @Input() question;
+
   constructor() { }
+
+  selected = trueOrFalse => {
+    this.question.trueFalseAnswer = trueOrFalse;
+  };
 
   ngOnInit() {
   }

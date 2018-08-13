@@ -27,6 +27,7 @@ import { LessonTabsComponent } from './lesson-tabs/lesson-tabs.component';
 import {LessonServiceClient} from './services/lesson.service.client';
 import {ModuleServiceClient} from './services/module.service.client';
 import { WidgetListComponent } from './widget-list/widget-list.component';
+import {QuizServiceClient} from './services/quiz.service.client';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { WidgetListComponent } from './widget-list/widget-list.component';
     FormsModule,
     routing,
   ],
-  providers: [CourseServiceClient, UserServiceClient, ModuleServiceClient, SectionServiceClient, LessonServiceClient],
+  providers: [CourseServiceClient, UserServiceClient, ModuleServiceClient, SectionServiceClient, LessonServiceClient, QuizServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

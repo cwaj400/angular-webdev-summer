@@ -7,6 +7,8 @@ import {SectionsComponent} from './sections/sections.component';
 import {EnrollmentComponent} from './enrollment/enrollment.component';
 import {LogoutComponent} from './logout/logout.component';
 import {ModuleListComponent} from './module-list/module-list.component';
+import {QuizTakerComponent} from './quiz-taker/quiz-taker.component';
+import {QuizListComponent} from './quiz-list/quiz-list.component';
 
 const appRoutes: Routes = [
   { path: 'enrollments', component: EnrollmentComponent },
@@ -16,7 +18,9 @@ const appRoutes: Routes = [
   { path: 'courses', component: CourseNavigatorComponent },
   { path: 'sections', component: SectionsComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'modules', component: ModuleListComponent}
+  { path: 'modules', component: ModuleListComponent},
+  { path: 'quizzes', component: QuizListComponent },
+  { path: 'quiz/:quizId', component: QuizTakerComponent }
   // { path: '**', redirectTo: '' }
 ];
 

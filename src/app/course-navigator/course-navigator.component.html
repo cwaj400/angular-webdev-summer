@@ -1,19 +1,40 @@
-<div class="container-fluid">
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
+  <input [(ngModel)]="sectionTitle" class="form-control" placeholder="title">
+  <input [(ngModel)]="sectionSeats" class="form-control" placeholder="seats">
+  <button type="button" class="btn btn-success" (click)="createSection(sectionTitle, sectionSeats)">Create Section</button>
+
   <h2>Courses</h2>
 
 
   <div class="row">
-    <div *ngFor="let course of courses" class="col-lg-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{course.title}}</h5>
-          <a class="float-right btn btn-primary"
-             href="/course/{{course.id}}">
-            Enroll
-          </a>
-          <button href="" class="btn btn-dark" (click)="seeContents(course)"> See Contents</button>
+    <div class="col-6">
+      <div *ngFor="let course of courses" class="col-lg-4">
+          <div class="card-body">
+            <div class="card">
+            <h5 class="card-title">{{course.title}}</h5>
+            <button class="float-right btn btn-primary"
+                    (click)='selectCourse(course)'>
+              Enroll
+            </button>
+            <button href="" class="btn btn-dark" (click)="selectCourse(course)">Select Course</button>
+          </div>
+
         </div>
       </div>
+    </div>
+
+    <div class="col-6">
+      <h2>Sections</h2>
+      <ul class="list-group">
+        <li
+          *ngFor="let section of sections"
+          class="list-group-item">
+          {{section.title}}{{section.courseId}} {{section.seats}}
+          <button (click)='enroll(section)'
+                  class="float-right btn btn-primary">Enroll
+          </button>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

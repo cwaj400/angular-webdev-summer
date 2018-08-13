@@ -17,7 +17,7 @@ export class SectionServiceClient {
       .then(response => response.json());
 
   updateSection = sectionId =>
-    fetch(URL + '/api/section/:sectionId' + sectionId, {
+    fetch(URL + '/api/section/' + sectionId, {
       method: 'put',
       credentials: 'include',
       headers: {
@@ -27,14 +27,14 @@ export class SectionServiceClient {
 
 
   findSectionByItsItd = sectionId =>
-    fetch(URL + '/api/section/:sectionId' + sectionId, {
+    fetch(URL + '/api/section/' + sectionId, {
       method: 'get',
       credentials: 'include',
     }).then(response => response.json());
 
 
   deleteSection = sectionId =>
-    fetch(URL + '/api/section/:sectionId' + sectionId, {
+    fetch(URL + '/api/section/' + sectionId, {
       method: 'delete',
       credentials: 'include',
       headers: {
@@ -44,7 +44,7 @@ export class SectionServiceClient {
 
 
   findSectionsForCourse = courseId =>
-    fetch(URL + '/api/course/:courseId/' + courseId + '/section')
+    fetch(URL + '/api/course/' + courseId + '/section')
       .then(response => response.json());
 
   createSection = section =>

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SectionServiceClient} from '../services/section.service.client';
 import {UserServiceClient} from '../services/user.service.client';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-enrollment',
@@ -12,7 +13,7 @@ export class EnrollmentComponent implements OnInit {
   currentUser = {};
 
   constructor(private sectionService: SectionServiceClient,
-              private userService: UserServiceClient) {
+              private userService: UserServiceClient, private router: Router) {
   }
 
   enroll = (userId, sectionId, seats) => {
@@ -41,14 +42,18 @@ export class EnrollmentComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.sectionService
-      .findAllSections()
-      .then(sections => this.sections = sections)
-      .then(() =>
-        this.userService.currentUser()
-          .then((user) => {
-            this.currentUser = user;
-          })
-      );
+
+    this.userService.currentUser()
+      .then(response => response.json()).then(user => {
+      if (user !== undefined) {
+        this.currentUser = user;
+        this.sectionService
+          .findAllSections()
+          .then(sections => this.sections = sections);
+      } else {
+        alert('Please log in first');
+        this.router.navigate(['login']);
+      }
+    });
   }
 }
