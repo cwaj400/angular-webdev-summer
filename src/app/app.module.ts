@@ -28,6 +28,7 @@ import {LessonServiceClient} from './services/lesson.service.client';
 import {ModuleServiceClient} from './services/module.service.client';
 import { WidgetListComponent } from './widget-list/widget-list.component';
 import {QuizServiceClient} from './services/quiz.service.client';
+import { QuizComponent } from './quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {QuizServiceClient} from './services/quiz.service.client';
     ModuleListComponent,
     LessonTabsComponent,
     WidgetListComponent,
+    QuizComponent,
   ],
   imports: [
     BrowserModule,

@@ -22,9 +22,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  register = (username, password, password2, email) => {
-    console.log('registering user: ' + username, password, email);
-    console.log('email: ' + email);
+  register = (username, password, password2, email, type) => {
+    console.log('registering user: ' + username, password, email, type);
 
     if (username && password && email !== undefined) {
       if (password === password2) {
@@ -32,6 +31,7 @@ export class RegisterComponent implements OnInit {
           username: username,
           password: password,
           email: email,
+          type: type
         };
         const promise = this.userService.register(user)
           .then(status => {

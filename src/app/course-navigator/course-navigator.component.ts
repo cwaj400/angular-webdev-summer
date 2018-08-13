@@ -28,18 +28,21 @@ export class CourseNavigatorComponent implements OnInit {
   constructor(private userService: UserServiceClient, private router: Router,
               private courseService: CourseServiceClient, private sectionService: SectionServiceClient) {
     router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        this.userService.currentUser()
-          .then(response => response.json()).then(user => {
-          if (user !== undefined) {
-            this.user = user;
-          }
-        });
-      }
+      this.userService.currentUser()
+        .then(response => response.json()).then(user => {
+        if (user !== undefined) {
+          this.user = user;
+          console.log(this.user);
+        } else {
+          alert('Please sign in first');
+          this.router.navigate(['login']);
+        }
+      });
     });
   }
 
   selectCourse(course) {
+    this.selectedCourse = undefined;
     this.selectedCourse = course;
     this.sectionService.findSectionsForCourse(course.id).then(sections => this.sections = sections);
   }
@@ -55,18 +58,13 @@ export class CourseNavigatorComponent implements OnInit {
   }
 
   enroll(section) {
-    if (this.user === undefined) {
-      alert('Please sign in first');
-    } else {
-
-    }
   }
+
 
   ngOnInit() {
     this.courseService
       .findAllCourses()
       .then(courses => this.courses = courses);
-      alert('Please log in to see quizzes and enrollments');
   }
 
   seeContents(course) {

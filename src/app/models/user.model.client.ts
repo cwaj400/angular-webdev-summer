@@ -4,5 +4,6 @@ export class User {
   username: String;
   password: String;
   email: String;
+  userType: String;
   sections: Section[];
 }

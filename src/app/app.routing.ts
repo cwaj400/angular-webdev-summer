@@ -21,7 +21,6 @@ const appRoutes: Routes = [
   { path: 'modules', component: ModuleListComponent},
   { path: 'quizzes', component: QuizListComponent },
   { path: 'quiz/:quizId', component: QuizTakerComponent }
-  // { path: '**', redirectTo: '' }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
