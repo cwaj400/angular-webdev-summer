@@ -3,6 +3,7 @@ import {User} from '../models/user.model.client';
 import {SectionServiceClient} from '../services/section.service.client';
 import {UserServiceClient} from '../services/user.service.client';
 import {ActivatedRoute, NavigationStart, Router} from '@angular/router';
+import {QuizServiceClient} from '../services/quiz.service.client';
 
 @Component({
   selector: 'app-submissions',
@@ -11,30 +12,22 @@ import {ActivatedRoute, NavigationStart, Router} from '@angular/router';
 })
 export class SubmissionsComponent implements OnInit {
 
-
+  quizId = '';
   submissions = [];
-  user: User = new User();
 
-  constructor(private service: SectionServiceClient,
-              private userService: UserServiceClient,
-              private router: Router, private route: ActivatedRoute) {
-
-    // route.params.subscribe(params => this.loadSections(params['courseId']));
-
-    router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        this.userService.currentUser()
-          .then(response => response.json()).then(user => {
-          if (user !== undefined) {
-            this.user = user;
-          } else {
-            alert('Please log in first');
-            this.router.navigate(['login']);
-          }
-        });
-      }
-    });
+  constructor(private service: QuizServiceClient,
+              private aRoute: ActivatedRoute) {
+    this.aRoute.params.subscribe(params =>
+      this.loadSubmissions(params['quizId']));
   }
+
+
+  loadSubmissions(quizId) {
+    this.quizId = quizId;
+    this.service.findQuizById(this.quizId)
+      .then(submissions => this.submissions = submissions);
+  }
+
   ngOnInit() {
   }
 

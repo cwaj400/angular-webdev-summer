@@ -1,3 +1,5 @@
+import {Question} from './question.model.client';
+
 export class Quiz {
   title: String;
   points: Number;
@@ -7,6 +9,7 @@ export class Quiz {
     value: String,
     correct: Boolean
   }];
+  questions: Question[];
   questionType: {
     type: String,
     enum: [

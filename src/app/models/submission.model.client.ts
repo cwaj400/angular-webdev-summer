@@ -5,7 +5,7 @@ import {Question} from './question.model.client';
 
 export class Submissions {
 
-student: User;
+  user: User;
 quiz: Quiz;
 answers: [{
   fillBlanksAnswers: String,

@@ -1,3 +1,10 @@
-<p>
-  submissions works!
-</p>
+
+<div class="container-fluid">
+  <h2>Submissions</h2>
+
+  <ul class="list-group">
+    <li *ngFor="let submission of submissions" class="list-group-item">
+      {{submission.user.username}}
+    </li>
+  </ul>
+</div>

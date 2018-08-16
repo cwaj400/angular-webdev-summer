@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {QuizServiceClient} from "../services/quiz.service.client";
+import {Quiz} from '../models/quiz.model.client';
 
 @Component({
   selector: 'app-quiz-taker',
@@ -13,7 +14,7 @@ export class QuizTakerComponent implements OnInit {
               private activatedRoute: ActivatedRoute) { }
 
   quizId = '';
-  quiz = {};
+  quiz = new Quiz();
 
   submitQuiz = quiz =>
     this.service
