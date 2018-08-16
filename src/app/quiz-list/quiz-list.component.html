@@ -3,11 +3,26 @@
 <ul class="list-group">
   <li *ngFor="let quiz of quizzes"
       class="list-group-item">
-    {{quiz.title}}
+    <strong>Title: </strong>{{quiz.title}} <br>
+    <strong>Points: </strong>{{quiz.points}} <br>
+    <strong>Description: </strong>
+    <p>{{quiz.description}}</p>
     <a class="float-right btn btn-primary"
        href="/quiz/{{quiz._id}}">
       Take
     </a>
+    <a class="float-md-right btn btn-success" href="/quiz/{{quiz._id}}/submissions">Submissions</a>
+    <!--<a class="float-md-right btn btn-success" href="/quiz/{{}}">Submissions</a>-->
   </li>
 </ul>
+
+<div *ngIf="user.userType == 'admin'">
+  <input [(ngModel)]="quizTitle" class="form-control"
+         placeholder="title">
+  <input [(ngModel)]="quizPoints" class="form-control" placeholder="points">
+  <input [(ngModel)]="quizDescription" class="form-control" placeholder="desc">
+  <button type="button" class="btn btn-primary" (click)="createQuiz(quizTitle, quizPoints, quizDescription)">Create
+    Quiz
+  </button>
+</div>
 

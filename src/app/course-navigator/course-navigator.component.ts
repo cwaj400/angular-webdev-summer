@@ -8,6 +8,9 @@ import {UserServiceClient} from '../services/user.service.client';
 import {User} from '../models/user.model.client';
 import {LessonServiceClient} from '../services/lesson.service.client';
 import {Section} from '../models/section.model.client';
+import {QuizServiceClient} from '../services/quiz.service.client';
+import {Quiz} from '../models/quiz.model.client';
+import {QuizListComponent} from '../quiz-list/quiz-list.component';
 
 
 @Component({
@@ -20,19 +23,20 @@ export class CourseNavigatorComponent implements OnInit {
   user = new User();
 
   sectionTitle: '';
-  sectionSeats: Number;
+  sectionSeats: '';
   courses: Course[] = [];
   selectedCourse = new Course();
   sections: Section[] = [];
+  selectedSection = new Section();
 
   constructor(private userService: UserServiceClient, private router: Router,
-              private courseService: CourseServiceClient, private sectionService: SectionServiceClient) {
+              private courseService: CourseServiceClient, private sectionService: SectionServiceClient,
+              private quizService: QuizServiceClient) {
     router.events.subscribe(event => {
       this.userService.currentUser()
         .then(response => response.json()).then(user => {
         if (user !== undefined) {
           this.user = user;
-          console.log(this.user);
         } else {
           alert('Please sign in first');
           this.router.navigate(['login']);
@@ -51,10 +55,13 @@ export class CourseNavigatorComponent implements OnInit {
     const section = {
       title: title,
       courseId: this.selectedCourse.id,
-      seats: seats
+      seats: seats,
     };
-    this.sectionService.createSection(section).then(() =>
-      alert('section ' + title + ' for course ' + this.selectedCourse.title + ' created!'));
+    this.sectionService.createSection(section).then(response => this.sections.push(response));
+  }
+
+  viewQuizzes() {
+    this.router.navigate(['quizzes']);
   }
 
   enroll(section) {

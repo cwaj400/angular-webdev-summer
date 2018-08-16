@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {throwErrorIfNoChangesMode} from '@angular/core/src/render3/errors';
 
 const URL = 'http://localhost:3000';
 
@@ -35,7 +36,7 @@ export class UserServiceClient {
       headers: {
         'content-type': 'application/json'
       }
-    })
+    });
   updateUser = (uid, user) => {
     fetch(URL + '/api/profile', {
       method: 'put',
@@ -44,7 +45,7 @@ export class UserServiceClient {
         'content-type': 'application/json'
       }, body: JSON.stringify(user)
     });
-  }
+  };
   deleteUser = (uid) => {
     fetch(URL + '/api/profile', {
       method: 'delete',
@@ -53,5 +54,5 @@ export class UserServiceClient {
         'content-type': 'application/json'
       }, body: JSON.stringify(uid)
     });
-  }
+  };
 }

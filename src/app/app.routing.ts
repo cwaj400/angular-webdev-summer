@@ -9,6 +9,7 @@ import {LogoutComponent} from './logout/logout.component';
 import {ModuleListComponent} from './module-list/module-list.component';
 import {QuizTakerComponent} from './quiz-taker/quiz-taker.component';
 import {QuizListComponent} from './quiz-list/quiz-list.component';
+import {SubmissionsComponent} from './submissions/submissions.component';
 
 const appRoutes: Routes = [
   { path: 'enrollments', component: EnrollmentComponent },
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'modules', component: ModuleListComponent},
   { path: 'quizzes', component: QuizListComponent },
-  { path: 'quiz/:quizId', component: QuizTakerComponent }
+  { path: 'quiz/:quizId', component: QuizTakerComponent },
+  { path: 'quiz/:quizId/submissions', component: SubmissionsComponent }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

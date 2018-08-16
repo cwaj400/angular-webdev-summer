@@ -56,4 +56,15 @@ export class SectionServiceClient {
       credentials: 'include',
       body: JSON.stringify(section)
     }).then(response => response.json());
+
+
+  findEnrollmentsForStudent = (sid) => {
+    fetch(URL + '/api/student/' + sid + '/enrollments', {
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      }, body: JSON.stringify(sid)
+    }).then(response => response.json());
+
+  };
 }

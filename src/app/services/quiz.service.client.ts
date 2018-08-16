@@ -16,6 +16,14 @@ export class QuizServiceClient {
       .then(response => response.json());
 
   createQuiz(quiz) {
+    fetch(URL + 'api/quiz', {
+      method: 'post',
+      body: JSON.stringify(quiz),
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json',
+      }
+    }).then(response => response.status);
   }
 
   findAllQuizzes = () =>
