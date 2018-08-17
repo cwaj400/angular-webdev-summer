@@ -21,8 +21,7 @@ export class QuizListComponent implements OnInit {
 
   constructor(private service: QuizServiceClient, private router: Router, private userService: UserServiceClient,
               private quizClient: QuizServiceClient) {
-    this.service.findAllQuizzes()
-      .then(quizzes => this.quizzes = quizzes);
+    this.service.findAllQuizzes().then(quizzes => this.quizzes = quizzes);
     router.events.subscribe(event => {
       this.userService.currentUser()
         .then(response => response.json()).then(user => {
@@ -40,11 +39,9 @@ export class QuizListComponent implements OnInit {
     this.quizClient.deleteQuiz(quizId);
   }
 
-  createQuiz(title, points, description) {
+  createQuiz(title) {
     const quiz = {
       title: this.quizTitle,
-      points: this.quizPoints,
-      description: this.quizDescription
     };
     this.quizClient.createQuiz(quiz);
     alert('Quiz created!');

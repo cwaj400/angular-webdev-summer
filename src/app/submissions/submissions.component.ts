@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../models/user.model.client';
 import {SectionServiceClient} from '../services/section.service.client';
 import {UserServiceClient} from '../services/user.service.client';
@@ -11,24 +11,22 @@ import {QuizServiceClient} from '../services/quiz.service.client';
   styleUrls: ['./submissions.component.css']
 })
 export class SubmissionsComponent implements OnInit {
-
-  quizId = '';
+  quiz: any;
   submissions = [];
+  user = '';
+  quizId = 0;
 
-  constructor(private service: QuizServiceClient,
-              private aRoute: ActivatedRoute) {
-    this.aRoute.params.subscribe(params =>
-      this.loadSubmissions(params['quizId']));
-  }
-
-
-  loadSubmissions(quizId) {
-    this.quizId = quizId;
-    this.service.findQuizById(this.quizId)
-      .then(submissions => this.submissions = submissions);
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private quizService: QuizServiceClient) {
   }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe((params) => {
+      this.quizId = params['quizId'];
+      this.quizService.findSubmissionsForQuizId(this.quizId).then((submissions) => this.submissions = submissions);
+      this.quizService.findQuizById(this.quizId)
+        .then(quiz => this.quiz = quiz);
+    });
   }
-
 }

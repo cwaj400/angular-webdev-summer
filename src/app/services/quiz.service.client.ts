@@ -15,6 +15,22 @@ export class QuizServiceClient {
     })
       .then(response => response.json());
 
+  findSubmissionsForQuizId = (quizId) =>
+    fetch(URL + 'api/quiz/' + quizId + '/submission')
+      .then(response => response.json());
+
+  findSubmissionByIds = (quizId, submissionId) =>
+    fetch(URL + 'api/quiz/' + quizId + '/submission/' + submissionId, {
+      method: 'get',
+      headers: {
+        'content-type': 'application/json',
+      },
+    }).then(response => response.json())
+
+  findAllQuizzes = () =>
+    fetch(URL + 'api/quiz')
+      .then(response => response.json())
+
   createQuiz(quiz) {
     fetch(URL + 'api/quiz', {
       method: 'post',
@@ -26,13 +42,9 @@ export class QuizServiceClient {
     }).then(response => response.status);
   }
 
-  findAllQuizzes = () =>
-    fetch(URL + 'api/quiz')
-      .then(response => response.json());
-
-  findQuizById = quizId =>
+  findQuizById = (quizId) =>
     fetch(URL + 'api/quiz/' + quizId)
-      .then(response => response.json());
+      .then(response => response.json())
 
   updateQuiz(quizId, quiz) {
     fetch(URL + 'api/quiz/' + quizId, {

@@ -28,7 +28,6 @@ import {LessonServiceClient} from './services/lesson.service.client';
 import {ModuleServiceClient} from './services/module.service.client';
 import { WidgetListComponent } from './widget-list/widget-list.component';
 import {QuizServiceClient} from './services/quiz.service.client';
-import { QuizComponent } from './quiz/quiz.component';
 import { SubmissionsComponent } from './submissions/submissions.component';
 
 @NgModule({
@@ -51,7 +50,6 @@ import { SubmissionsComponent } from './submissions/submissions.component';
     ModuleListComponent,
     LessonTabsComponent,
     WidgetListComponent,
-    QuizComponent,
     SubmissionsComponent,
   ],
   imports: [

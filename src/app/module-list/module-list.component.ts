@@ -12,22 +12,6 @@ export class ModuleListComponent implements OnInit {
   }
   private modService: ModuleServiceClient;
 
-  courseId;
-  moduleId;
-  modules = [];
-
-  // setParams(params) {
-  //   this.courseId = params['courseId'];
-  //   this.moduleId = params['moduleId'];
-  //   this.loadModules(this.courseId);
-  // }
-
-  loadModules(courseId) {
-    // this.courseId = courseId;
-    // this.service.findModulesForCourse(courseId)
-    //   .then(modules => this.modules = modules);
-  }
-
   ngOnInit() {
   }
 
