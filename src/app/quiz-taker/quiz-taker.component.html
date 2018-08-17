@@ -40,3 +40,12 @@
     </div>
   </li>
 </ul>
+
+<div *ngIf="user.userType == 'admin'">
+  <input [(ngModel)]="title" class="form-control" placeholder="Title">
+  <input [(ngModel)]="points" class="form-control" placeholder="Points">
+  <input [(ngModel)]="description" class="form-control" placeholder="Description">
+  <button type="button" class="btn btn-primary"
+          (click)="createQuestion(title, points, description)">Create True False Question
+  </button>
+</div>
