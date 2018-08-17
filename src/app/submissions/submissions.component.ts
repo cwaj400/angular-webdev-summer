@@ -12,13 +12,12 @@ import {subscribeOn} from 'rxjs/operators';
   styleUrls: ['./submissions.component.css']
 })
 export class SubmissionsComponent implements OnInit {
-  quiz: any;
-  submissions = [];
+  quiz: '';
   user = '';
-  quizId = 0;
+  quizId = Number;
+  submissions = [];
 
-  constructor(private router: Router,
-              private activatedRoute: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute,
               private quizService: QuizServiceClient) {
   }
 
